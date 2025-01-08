@@ -9,7 +9,7 @@ WrongCat::~WrongCat() {
 	std::cout << "The WrongCat falls into a sewer!" << std::endl;
 };
 
-WrongCat::WrongCat(const WrongCat& copy) {
+WrongCat::WrongCat(const WrongCat& copy) : WrongAnimal(copy) {
 	*this = copy;
 	std::cout << "A mechanical WrongCat is made in a LITERAL kitten factory, owned by " << copy._type << std::endl;
 };

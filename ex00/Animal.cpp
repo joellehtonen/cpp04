@@ -19,8 +19,11 @@ Animal::Animal(const Animal& copy) {
 };
 
 Animal& Animal::operator=(const Animal& source) {
-	this->_type = source._type;
-	std::cout << "Animal is born out of " << source._type << std::endl;
+	if (this != &source)
+	{
+		this->_type = source._type;
+		std::cout << "Animal is born out of " << source._type << std::endl;
+	}
 	return (*this);
 };
 
@@ -29,6 +32,9 @@ void Animal::makeSound()
 	std::cout << "You hear a default animal sound in the wind!" << std::endl;
 };
 
-std::string	Animal::getType() {
-	return (this->_type);
+std::string	Animal::getType() const {
+	if (this->_type.empty() == true)
+		return "Empty type";
+	else
+		return this->_type;
 };

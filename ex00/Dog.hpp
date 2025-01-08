@@ -10,6 +10,6 @@ class Dog : public Animal {
 		Dog(const Dog& copy);
 		Dog& operator=(const Dog& source);
 		
-		void 		makeSound();
-		std::string	getType();
+		void 		makeSound() override;
+		std::string	getType() const;
 };
