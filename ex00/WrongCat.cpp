@@ -2,21 +2,21 @@
 
 WrongCat::WrongCat() {
 	this->_type = "WrongCat";
-	std::cout << "A mechanical wrongcat 🤖 is made!" << std::endl;
+	std::cout << "A mechanical WrongCat 🤖 is made!" << std::endl;
 };
 
 WrongCat::~WrongCat() {
-	std::cout << "The wrongcat falls into a sewer!" << std::endl;
+	std::cout << "The WrongCat falls into a sewer!" << std::endl;
 };
 
 WrongCat::WrongCat(const WrongCat& copy) {
 	*this = copy;
-	std::cout << "A mechanical wrongcat is made in a LITERAL kitten factory, owned by " << copy._type << std::endl;
+	std::cout << "A mechanical WrongCat is made in a LITERAL kitten factory, owned by " << copy._type << std::endl;
 };
 
 WrongCat& WrongCat::operator=(const WrongCat& source) {
 	this->_type = source._type;
-	std::cout << "A mechanical wrongcat is made from nuts and bolts of " << source._type << std::endl;
+	std::cout << "A mechanical WrongCat is made from nuts and bolts of " << source._type << std::endl;
 	return (*this);
 };
 
