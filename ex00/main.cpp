@@ -38,6 +38,10 @@ int main(void)
 	std::cout << "Dogbert is a type of " << dogbert.getType() << std::endl;
 	dogbert.makeSound();
 
+	Dog doglas(dogbert);
+	std::cout << "Doglas is a type of " << dogbert.getType() << std::endl;
+	doglas.makeSound();
+
 	Animal *doggie = new Dog();
 	std::cout << "Doggie is a type of " << doggie->getType() << std::endl;
 	doggie->makeSound();

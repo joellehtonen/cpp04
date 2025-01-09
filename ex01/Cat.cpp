@@ -36,3 +36,13 @@ std::string	Cat::getType() const {
 	else
 		return this->_type;
 };
+
+const std::string&	Cat::getIdea(int i) const
+{
+	return this->catBrain->getIdea(i);
+};
+
+void				Cat::setIdea(int i, std::string newIdea)
+{
+	this->catBrain->setIdea(i, newIdea);
+};

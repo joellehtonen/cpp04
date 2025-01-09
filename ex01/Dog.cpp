@@ -36,3 +36,13 @@ std::string	Dog::getType() const {
 	else
 		return this->_type;
 };
+
+const std::string&	Dog::getIdea(int i) const
+{
+	return this->dogBrain->getIdea(i);
+};
+
+void	Dog::setIdea(int i, std::string newIdea)
+{
+	this->dogBrain->setIdea(i, newIdea);
+};
