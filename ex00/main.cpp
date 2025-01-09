@@ -35,6 +35,10 @@ int main(void)
 	delete i1;
 
 	std::cout << std::endl << "TEST 3" << std::endl;
+	Dog dog1();
+	Dog dog2(std::string "SnoopDogg");
+
+
 	
 
 }
