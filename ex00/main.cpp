@@ -7,6 +7,7 @@
 int main(void)
 {
 	std::cout << "TEST 1" << std::endl;
+	
 	Animal* meta = new Animal();
 	Animal* j = new Dog();
 	Animal* i = new Cat();
@@ -21,24 +22,24 @@ int main(void)
 	delete i;
 
 	std::cout << std::endl << "TEST 2" << std::endl;
-	WrongAnimal* meta1 = new WrongAnimal();
-	Animal* j1 = new Dog();
-	WrongAnimal* i1 = new WrongCat();
 
-	std::cout << j1->getType() << " " << std::endl;
-	std::cout << i1->getType() << " " << std::endl;
-	i1->makeSound();
-	j1->makeSound();
-	meta1->makeSound();
-	delete meta1;
-	delete j1;
-	delete i1;
+	WrongAnimal* meta01 = new WrongAnimal();
+	WrongAnimal* i01 = new WrongCat();
+
+	std::cout << i01->getType() << " " << std::endl;
+	i01->makeSound();
+	meta01->makeSound();
+	delete meta01;
+	delete i01;
 
 	std::cout << std::endl << "TEST 3" << std::endl;
-	Dog dog1();
-	Dog dog2(std::string "SnoopDogg");
 
+	Dog dogbert;
+	std::cout << "Dogbert is a type of " << dogbert.getType() << std::endl;
+	dogbert.makeSound();
 
-	
-
+	Animal *doggie = new Dog();
+	std::cout << "Doggie is a type of " << doggie->getType() << std::endl;
+	doggie->makeSound();
+	delete doggie;
 }

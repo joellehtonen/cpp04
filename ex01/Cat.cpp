@@ -1,11 +1,13 @@
 #include "Cat.hpp"
 
 Cat::Cat() {
+	catBrain = new Brain();
 	this->_type = "Cat";
 	std::cout << "A pretty cat 🐱 is born!" << std::endl;
 };
 
 Cat::~Cat() {
+	delete catBrain;
 	std::cout << "The cat escapes into the wild!" << std::endl;
 };
 

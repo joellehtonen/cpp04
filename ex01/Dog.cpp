@@ -1,11 +1,13 @@
 #include "Dog.hpp"
 
 Dog::Dog() {
+	dogBrain = new Brain();
 	this->_type = "Dog";
 	std::cout << "A cute dog 🐶 is born!" << std::endl;
 };
 
 Dog::~Dog() {
+	delete dogBrain;
 	std::cout << "The dog runs away from the kennel!" << std::endl;
 };
 
