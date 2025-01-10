@@ -1,13 +1,14 @@
 #include "Dog.hpp"
 
 Dog::Dog() {
-	dogBrain = new Brain();
+	this->_dogBrain = new Brain();
 	this->_type = "Dog";
 	std::cout << "A cute dog 🐶 is born!" << std::endl;
 };
 
 Dog::~Dog() {
-	delete dogBrain;
+	delete _dogBrain;
+	_dogBrain = nullptr;
 	std::cout << "The dog runs away from the kennel!" << std::endl;
 };
 
@@ -20,6 +21,7 @@ Dog& Dog::operator=(const Dog& source) {
 	if (this != &source)
 	{
 		this->_type = source._type;
+		this->_dogBrain = new Brain(*source._dogBrain);
 		std::cout << "A puppy is born out of a " << source._type << std::endl;
 	}
 	return (*this);
@@ -37,12 +39,12 @@ std::string	Dog::getType() const {
 		return this->_type;
 };
 
-const std::string&	Dog::getIdea(int i) const
+const std::string	Dog::getIdea(int i) const
 {
-	return this->dogBrain->getIdea(i);
+	return this->_dogBrain->getIdea(i);
 };
 
 void	Dog::setIdea(int i, std::string newIdea)
 {
-	this->dogBrain->setIdea(i, newIdea);
+	this->_dogBrain->setIdea(i, newIdea);
 };

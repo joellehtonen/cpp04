@@ -6,7 +6,7 @@
 
 class Dog : public Animal {
 	private:
-		Brain* dogBrain;
+		Brain* _dogBrain;
 
 	public: 
 		Dog();
@@ -17,6 +17,6 @@ class Dog : public Animal {
 		void 				makeSound() override;
 		std::string			getType() const;
 
-		const std::string&	getIdea(int i) const;
+		const std::string	getIdea(int i) const;
 		void				setIdea(int i, std::string newIdea);
 };

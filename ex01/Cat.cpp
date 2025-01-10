@@ -1,13 +1,14 @@
 #include "Cat.hpp"
 
 Cat::Cat() {
-	catBrain = new Brain();
+	this->_catBrain = new Brain();
 	this->_type = "Cat";
 	std::cout << "A pretty cat 🐱 is born!" << std::endl;
 };
 
 Cat::~Cat() {
-	delete catBrain;
+	delete _catBrain;
+	_catBrain = nullptr;
 	std::cout << "The cat escapes into the wild!" << std::endl;
 };
 
@@ -37,12 +38,12 @@ std::string	Cat::getType() const {
 		return this->_type;
 };
 
-const std::string&	Cat::getIdea(int i) const
+const std::string	Cat::getIdea(int i) const
 {
-	return this->catBrain->getIdea(i);
+	return this->_catBrain->getIdea(i);
 };
 
-void				Cat::setIdea(int i, std::string newIdea)
+void	Cat::setIdea(int i, std::string newIdea)
 {
-	this->catBrain->setIdea(i, newIdea);
+	this->_catBrain->setIdea(i, newIdea);
 };

@@ -6,7 +6,7 @@
 
 class Cat : public Animal {
 	private:
-		Brain* catBrain;
+		Brain* _catBrain;
 
 	public: 
 		Cat();
@@ -17,6 +17,6 @@ class Cat : public Animal {
 		void 		makeSound() override;
 		std::string	getType() const;
 
-		const std::string&	getIdea(int i) const;
+		const std::string	getIdea(int i) const;
 		void				setIdea(int i, std::string newIdea);
 };
