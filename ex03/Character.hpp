@@ -25,4 +25,5 @@ class Character : public ICharacter
 		void 				use(int idx, ICharacter& target) override;
 
 		void 				sweepTheFloor();
+		void				emptyPockets();
 };;

@@ -11,4 +11,4 @@ class Ice : public AMateria
 		~Ice();
 		Ice(const Ice& copy);
 		Ice& operator=(const Ice& copy);
-}
+};

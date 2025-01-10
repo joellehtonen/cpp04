@@ -17,13 +17,12 @@ std::string const & AMateria::getType() const
 
 };
 AMateria* AMateria::clone() const {
-
 };
 
 void AMateria::use(ICharacter& target) {
 	if (this->_type == "ice")
-		std::cout << this->_name << "shoots an ice bolt at " << target << std::endl;
+		std::cout << " shoots an ice bolt at " << target.getName() << "!" << std::endl;
 
 	if (this->_type == "cure")
-		std::cout << this->_name << "heals " << target << "'s wounds" << std::endl;
+		std::cout << " heals " << target.getName() << "'s wounds." << std::endl;
 };

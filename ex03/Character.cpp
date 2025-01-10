@@ -2,17 +2,19 @@
 
 Character::Character() { };
 Character::Character(std::string name) : _name(name) {};
-Character::~Character() { };
+Character::~Character() {
+		this->sweepTheFloor();
+		this->emptyPockets();
+ };
 Character::Character(const Character& copy) {
 	*this = copy;
-	//for (int i = 0; i < 4; i++)
-	//	delete _AMateria[i];
-	//for (int i = 0; i < 4; i++)
-		//_AMateria[i] = new copy._AMateria[i();
-	
 };
 Character& Character::operator=(const Character& copy) {
 	this->_name = copy._name;
+	this->sweepTheFloor();
+	this->emptyPockets();
+	for (int i = 0; i < _inventorySize; i++)
+		_inventory[i] = copy._inventory[i]->clone();
 	return *this;
 };
 
@@ -54,10 +56,33 @@ void Character::unequip(int idx) {
 };
 
 void Character::use(int idx, ICharacter& target) {
-	AMateria->use(target);
+	if ((idx < 0 || idx > _inventorySize) || this->_inventory[idx] == NULL)
+		if (this->_inventory[idx] == NULL)
+			std::cout << this->getName() << " tries to use materia for a spell, but " << idx << ". pocket is empty!" << std::endl;
+		return ;
+	std::cout << this->getName();
+	this->_inventory[idx]->use(target);
+	return ;
 };
 
 void Character::sweepTheFloor() {
 	for (int i = 0; i < _floorSize; i++)
-		delete _floor[i];
+	{	
+		if (this->_floor[i] != NULL)
+		{
+			delete _floor[i];
+			this->_floor[i] = nullptr;
+		}
+	}
 };
+
+void Character::emptyPockets() {
+	for (int i = 0; i < _inventorySize; i++)
+	{
+		if (this->_inventory[i] != NULL)
+		{
+			delete _inventory[i];
+			this->_inventory[i] = nullptr;
+		}
+	}
+}
