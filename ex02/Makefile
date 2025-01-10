@@ -1,4 +1,4 @@
-NAME	=	world_on_fire
+NAME	=	abstract_class
 CC		=	c++
 FLAGS	=	-Wall -Wextra -Werror -std=c++20
 SRCS	=	main.cpp \
