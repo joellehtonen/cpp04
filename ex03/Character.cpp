@@ -9,6 +9,7 @@ Character::Character(std::string name) : _name(name) {
 Character::~Character() {
 		this->sweepTheFloor();
 		this->emptyPockets();
+		std::cout << this->_name << " vanishes!" << std::endl;
  };
 Character::Character(const Character& copy) {
 	*this = copy;
@@ -20,7 +21,10 @@ Character& Character::operator=(const Character& copy) {
 		this->sweepTheFloor();
 		this->emptyPockets();
 		for (int i = 0; i < _inventorySize; i++)
-			_inventory[i] = copy._inventory[i]->clone();
+		{
+			if (copy._inventory[i] != NULL)
+				_inventory[i] = copy._inventory[i]->clone();
+		}
 	}
 	return *this;
 };
@@ -33,24 +37,30 @@ std::string const & Character::getName() const
 void Character::equip(AMateria* m) {
 	for (int i = 0; i < _inventorySize; i++)
 	{
-		if (this->_inventory[i] == NULL)
+		if (this->_inventory[i] == NULL && m != NULL)
 		{
-			std::cout << this->getName() << " puts " << m->getType() << " spell into his pocket." << std::endl;
+			std::cout << this->getName() << " puts a potion of " << m->getType() << " into their " << i << ". pocket" << std::endl;
 			this->_inventory[i] = m;
 			return ;
 		}
 	}
-	std::cout << this->getName() << "'s pockets are full!" << std::endl;
+	std::cout << this->getName() << " cannot put the potion into their pocket" << std::endl;
 	return ;
 };
 
 void Character::unequip(int idx) {
-	if ((idx < 0 || idx > _inventorySize) || this->_inventory[idx] == NULL)
+	if (idx < 0 || idx > _inventorySize)
 	{
-		std::cout << this->getName() << " tries to drop something to the floor, but is unable to do so!" << std::endl;
+		std::cout << this->_name << " realizes they do not have a " << idx << ". pocket!" << std::endl;
 		return ;
 	}
-	std::cout << this->getName() << " drops " << this->_inventory[idx]->getType() << " to the floor." << std::endl;
+	if (this->_inventory[idx] == NULL)
+	{
+		if (this->_inventory[idx] == NULL)
+			std::cout << this->_name << " tries to drop a potion to the floor, but the pocket is already empty!" << std::endl;
+		return ;
+	}
+	std::cout << this->getName() << " drops a potion of " << this->_inventory[idx]->getType() << " from their " << idx << ". pocket to the floor" << std::endl;
 	for (int i = 0; i < _floorSize; i++)
 	{
 		if (this->_floor[i] == NULL)
@@ -66,10 +76,16 @@ void Character::unequip(int idx) {
 };
 
 void Character::use(int idx, ICharacter& target) {
-	if ((idx < 0 || idx > _inventorySize) || this->_inventory[idx] == NULL)
+	if (idx < 0 || idx > _inventorySize)
+	{
+		std::cout << this->_name << " tries to use a potion, but no " << idx << ". pocket exists!" << std::endl;
+		return ;
+	}
+	
+	if (this->_inventory[idx] == NULL)
 	{
 		if (this->_inventory[idx] == NULL)
-			std::cout << this->getName() << " tries to use materia for a spell, but " << idx << ". pocket is empty!" << std::endl;
+			std::cout << this->getName() << " tries to use a potion, but " << idx << ". pocket is empty!" << std::endl;
 		return ;
 	}
 	std::cout << this->getName();
@@ -78,6 +94,8 @@ void Character::use(int idx, ICharacter& target) {
 };
 
 void Character::sweepTheFloor() {
+	std::cout << "Floor before cleaning: " << std::endl;
+	displayFloor();
 	for (int i = 0; i < _floorSize; i++)
 	{	
 		if (this->_floor[i] != NULL)
@@ -97,4 +115,30 @@ void Character::emptyPockets() {
 			this->_inventory[i] = nullptr;
 		}
 	}
-}
+};
+
+void Character::displayInventory() {
+	for (int i = 0; i < _inventorySize; i++)
+	{
+		if (_inventory[i] != NULL)
+			std::cout << this->_name << "'s " << i << ". pocket has a potion of " << _inventory[i]->getType() << " in it" << std::endl;
+		else
+			std::cout << this->_name << "'s " << i << ". pocket is empty..." << std::endl;
+	}
+};
+
+void Character::displayFloor() {
+	for (int i = 0; i < _floorSize; i++)
+	{
+		if (_floor[i] != NULL)
+			std::cout << "A potion of " << _floor[i]->getType() <<  " is laying next to " << this->_name << "'s feet, on the " << i << ". tile" << std::endl;
+
+		else
+			std::cout << i << ". floor tile next to " << this->_name << " is empty" << std::endl;
+	}
+};
+
+void Character::setName(std::string name)
+{
+	this->_name = name;
+};
