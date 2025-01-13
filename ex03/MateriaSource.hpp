@@ -6,6 +6,7 @@ class MateriaSource : public IMateriaSource
 	private:
 		const static int	_maxPages = 4;
 		AMateria*			_materias[_maxPages];
+		void 				initMaterias();
 		void 				forgetMaterias();
 
 	public:

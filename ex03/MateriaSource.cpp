@@ -1,7 +1,7 @@
 #include "MateriaSource.hpp"
 
 MateriaSource::MateriaSource() {
-	forgetMaterias();
+	initMaterias();
 	std::cout << "A magical new source of materia is conjured!" << std::endl;
 };
 MateriaSource::~MateriaSource() {
@@ -39,6 +39,8 @@ void MateriaSource::learnMateria(AMateria* materia)
 		}
 	}
 	std::cout << "But there is no room to write new formulas..." << std::endl;
+	delete materia;
+	materia = nullptr;
 	return ;
 };
 
@@ -62,6 +64,14 @@ void MateriaSource::forgetMaterias()
 	{
 		if (_materias[i] != NULL)
 			delete _materias[i];
+		_materias[i] = nullptr;
+	}
+};
+
+void MateriaSource::initMaterias()
+{
+	for (int i = 0; i < _maxPages; i++)
+	{
 		_materias[i] = nullptr;
 	}
 };

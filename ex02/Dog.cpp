@@ -18,9 +18,11 @@ Dog::Dog(const Dog& copy) : Animal(copy) {
 };
 
 Dog& Dog::operator=(const Dog& source) {
-	if (this != &source)
+	if (this != &source && )
 	{
 		this->_type = source._type;
+		if (this->_dogBrain != NULL)
+			delete this->_dogBrain;
 		this->_dogBrain = new Brain(*source._dogBrain);
 		std::cout << "A puppy is born out of a " << source._type << std::endl;
 	}

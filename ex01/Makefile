@@ -1,6 +1,6 @@
 NAME	=	world_on_fire
 CC		=	c++
-FLAGS	=	-Wall -Wextra -Werror -std=c++20
+FLAGS	=	-g -Wall -Wextra -Werror -std=c++20
 SRCS	=	main.cpp \
 			Animal.cpp \
 			Dog.cpp \

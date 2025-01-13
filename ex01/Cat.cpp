@@ -21,6 +21,9 @@ Cat& Cat::operator=(const Cat& source) {
 	if (this != &source)
 	{
 		this->_type = source._type;
+		if (this->_catBrain != NULL)
+			delete this->_catBrain;
+		this->_catBrain = new Brain(*source._catBrain);
 		std::cout << "A kitty is born out of a " << source._type << std::endl;
 	}
 	return (*this);

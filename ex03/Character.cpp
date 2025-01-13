@@ -1,15 +1,17 @@
 #include "Character.hpp"
 
 Character::Character() {
+	this->initInventory();
 	std::cout << "New default character is born!" << std::endl;
 };
 Character::Character(std::string name) : _name(name) {
+	this->initInventory();
 	std::cout << "New character " << this->_name << " is born!" << std::endl;
 };
 Character::~Character() {
-		this->sweepTheFloor();
-		this->emptyPockets();
-		std::cout << this->_name << " vanishes!" << std::endl;
+	this->sweepTheFloor();
+	this->emptyPockets();
+	std::cout << this->_name << " vanishes!" << std::endl;
  };
 Character::Character(const Character& copy) {
 	*this = copy;
@@ -57,7 +59,7 @@ void Character::unequip(int idx) {
 	if (this->_inventory[idx] == NULL)
 	{
 		if (this->_inventory[idx] == NULL)
-			std::cout << this->_name << " tries to drop a potion to the floor, but the pocket is already empty!" << std::endl;
+			std::cout << this->_name << " tries to drop a potion to the floor, but the pocket " << idx << " is already empty!" << std::endl;
 		return ;
 	}
 	std::cout << this->getName() << " drops a potion of " << this->_inventory[idx]->getType() << " from their " << idx << ". pocket to the floor" << std::endl;
@@ -94,13 +96,11 @@ void Character::use(int idx, ICharacter& target) {
 };
 
 void Character::sweepTheFloor() {
-	std::cout << "Floor before cleaning: " << std::endl;
-	displayFloor();
 	for (int i = 0; i < _floorSize; i++)
 	{	
 		if (this->_floor[i] != NULL)
 		{
-			delete _floor[i];
+			delete this->_floor[i];
 			this->_floor[i] = nullptr;
 		}
 	}
@@ -111,11 +111,18 @@ void Character::emptyPockets() {
 	{
 		if (this->_inventory[i] != NULL)
 		{
-			delete _inventory[i];
+			delete this->_inventory[i];
 			this->_inventory[i] = nullptr;
 		}
 	}
 };
+
+void Character::initInventory() {
+	for (int i = 0; i < _inventorySize; i++)
+		this->_inventory[i] = nullptr;
+	for (int i = 0; i < _floorSize; i++)
+		this->_floor[i] = nullptr;
+}
 
 void Character::displayInventory() {
 	for (int i = 0; i < _inventorySize; i++)
@@ -131,7 +138,7 @@ void Character::displayFloor() {
 	for (int i = 0; i < _floorSize; i++)
 	{
 		if (_floor[i] != NULL)
-			std::cout << "A potion of " << _floor[i]->getType() <<  " is laying next to " << this->_name << "'s feet, on the " << i << ". tile" << std::endl;
+			std::cout << "On the " << i << ". tile, a potion is laying next to " << this->_name << "'s feet" << std::endl;
 
 		else
 			std::cout << i << ". floor tile next to " << this->_name << " is empty" << std::endl;
