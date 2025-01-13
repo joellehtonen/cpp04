@@ -11,6 +11,8 @@ class Character : public ICharacter
 		static int const	_floorSize = _inventorySize * 2;
 		AMateria*			_inventory[_inventorySize];
 		AMateria*			_floor[_floorSize];
+		void 				sweepTheFloor();
+		void				emptyPockets();
 
 	public:
 		Character();
@@ -19,11 +21,8 @@ class Character : public ICharacter
 		Character(const Character& copy);
 		Character& operator=(const Character& copy);
 
-		std::string const &	getName() const override;
-		void 				equip(AMateria* m) override;
-		void 				unequip(int idx) override;
-		void 				use(int idx, ICharacter& target) override;
-
-		void 				sweepTheFloor();
-		void				emptyPockets();
-};;
+		std::string const &	getName() const;
+		void 				equip(AMateria* m);
+		void 				unequip(int idx);
+		void 				use(int idx, ICharacter& target);
+};

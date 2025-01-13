@@ -1,13 +1,12 @@
 NAME	=	interface
 CC		=	c++
-FLAGS	=	-Wall -Wextra -Werror -std=c++20
+FLAGS	=	-ggdb3 -g -Wall -Wextra -Werror -std=c++20
 SRCS	=	main.cpp \
-			Animal.cpp \
-			Dog.cpp \
-			Cat.cpp \
-			WrongAnimal.cpp \
-			WrongCat.cpp \
-			Brain.cpp
+			AMateria.cpp \
+			Character.cpp \
+			Cure.cpp \
+			Ice.cpp \
+			MateriaSource.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 
 all: $(NAME)

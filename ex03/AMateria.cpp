@@ -1,6 +1,8 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria() { };
+AMateria::AMateria() {
+	std::cout << "New materia is made out of thin air." << std::endl;
+};
 AMateria::AMateria(std::string const & type) : _type(type) {
 };
 AMateria::~AMateria() { };
@@ -8,15 +10,14 @@ AMateria::AMateria(const AMateria& copy) {
 	*this = copy;
 };
 AMateria& AMateria::operator=(const AMateria& copy) {
-	this->_type = copy._type;
+	if (this != &copy)
+		this->_type = copy._type;
 	return *this;
 };
 
 std::string const & AMateria::getType() const
 {
-
-};
-AMateria* AMateria::clone() const {
+	return (this->_type);
 };
 
 void AMateria::use(ICharacter& target) {

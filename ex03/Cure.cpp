@@ -1,11 +1,19 @@
 #include "Cure.hpp"
 
-Cure::Cure() : _type("cure") { };
+Cure::Cure() : AMateria("cure") {
+};
 Cure::~Cure() { };
 Cure::Cure(const Cure& copy) {
 	*this = copy;
 };
 Cure& Cure::operator=(const Cure& copy) {
-	this->_type = copy._type;
+	if (this != &copy)
+		this->_type = copy._type;
 	return *this;
 };
+
+AMateria* Cure::clone() const
+{
+	AMateria* newCure = new Cure();
+	return (newCure);
+}

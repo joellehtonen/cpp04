@@ -4,7 +4,7 @@
 
 class Cure : public AMateria
 {
-	protected:
+	private:
 		std::string _type;
 
 	public:
@@ -12,4 +12,6 @@ class Cure : public AMateria
 		~Cure();
 		Cure(const Cure& copy);
 		Cure& operator=(const Cure& copy);
+
+		AMateria* clone() const;
 };

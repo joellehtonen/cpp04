@@ -4,11 +4,13 @@
 
 class Ice : public AMateria
 {
-	protected:
+	private:
 		std::string _type;
 	public:
 		Ice();
 		~Ice();
 		Ice(const Ice& copy);
 		Ice& operator=(const Ice& copy);
+
+		AMateria* clone() const override;
 };
