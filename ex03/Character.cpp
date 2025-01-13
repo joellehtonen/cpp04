@@ -46,14 +46,17 @@ void Character::equip(AMateria* m) {
 			return ;
 		}
 	}
-	std::cout << this->getName() << " cannot put the potion into their pocket" << std::endl;
+	if (m == NULL)
+		std::cout << this->getName() << " cannot put a non-existing potion into their pocket" << std::endl;
+	else
+		std::cout << this->getName() << " realizes their pockets are already full!" << std::endl;
 	return ;
 };
 
 void Character::unequip(int idx) {
 	if (idx < 0 || idx > _inventorySize)
 	{
-		std::cout << this->_name << " realizes they do not have a " << idx << ". pocket!" << std::endl;
+		std::cout << this->_name << " realizes they do not have a " << idx << ". pocket to put a potion in!" << std::endl;
 		return ;
 	}
 	if (this->_inventory[idx] == NULL)

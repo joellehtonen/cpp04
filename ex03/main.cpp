@@ -23,7 +23,7 @@ int main ()
 	delete me;
 	delete src;
 
-	std::cout << "TEST #2" << std::endl;
+	std::cout << "\nTEST #2" << std::endl;
 	Character *Gandalf = new Character("Gandalf");
 	Character *Saruman = new Character("Saruman");
 	MateriaSource *grimoire = new MateriaSource();
@@ -38,8 +38,11 @@ int main ()
 	Gandalf->equip(goodSpell1);
 	AMateria *goodSpell2 = grimoire->createMateria("cure");
 	Gandalf->equip(goodSpell2);
+	Gandalf->displayInventory();
 	AMateria *goodSpell3 = grimoire->createMateria("ice");
 	Gandalf->equip(goodSpell3);
+	AMateria *goodSpell4 = grimoire->createMateria("ice");
+	Gandalf->equip(goodSpell4);
 	Gandalf->displayInventory();
 	AMateria *evilSpell1 = grimoire->createMateria("ice");
 	AMateria *evilSpell2 = grimoire->createMateria("ice");
@@ -51,6 +54,7 @@ int main ()
 	Saruman->equip(evilSpell3);
 	Saruman->equip(evilSpell4);
 	Saruman->equip(evilSpell5);
+	Saruman->unequip(5);
 	Saruman->displayInventory();
 
 	Saruman->use(0, *Gandalf);
@@ -59,6 +63,7 @@ int main ()
 	Saruman->use(3, *Gandalf);
 	Saruman->use(3, *Gandalf);
 	Saruman->use(4, *Gandalf);
+
 	Gandalf->use(0, *Gandalf);
 	Gandalf->use(2, *Saruman);
 	Gandalf->unequip(3);
