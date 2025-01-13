@@ -18,7 +18,7 @@ Dog::Dog(const Dog& copy) : Animal(copy) {
 };
 
 Dog& Dog::operator=(const Dog& source) {
-	if (this != &source && )
+	if (this != &source)
 	{
 		this->_type = source._type;
 		if (this->_dogBrain != NULL)
