@@ -8,7 +8,7 @@ class Character : public ICharacter
 	private:
 		std::string 		_name;
 		static int const	_inventorySize = 4;
-		static int const	_floorSize = _inventorySize * 2;
+		static int const	_floorSize = _inventorySize * 4;
 		AMateria*			_inventory[_inventorySize];
 		AMateria*			_floor[_floorSize];
 		void				emptyPockets();

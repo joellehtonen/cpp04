@@ -65,18 +65,19 @@ void Character::unequip(int idx) {
 			std::cout << this->_name << " tries to drop a potion to the floor, but the pocket " << idx << " is already empty!" << std::endl;
 		return ;
 	}
-	std::cout << this->getName() << " drops a potion of " << this->_inventory[idx]->getType() << " from their " << idx << ". pocket to the floor" << std::endl;
 	for (int i = 0; i < _floorSize; i++)
 	{
 		if (this->_floor[i] == NULL)
 		{
 			this->_floor[i]  = this->_inventory[idx];
 			this->_inventory[idx] = nullptr;
+			std::cout << this->getName() << " drops a potion of " << this->_inventory[idx]->getType() << " from their " << idx << ". pocket to the floor" << std::endl;
 			return ;
 		}
 	}
-	sweepTheFloor();
-	this->_floor[0] = this->_inventory[idx];
+	//sweepTheFloor();
+	//this->_floor[0] = this->_inventory[idx];
+	std::cout << "The floor is cluttered with stuff, nothing fits there anymore!" << std::endl;
 	return ;
 };
 
