@@ -70,13 +70,11 @@ void Character::unequip(int idx) {
 		if (this->_floor[i] == NULL)
 		{
 			this->_floor[i]  = this->_inventory[idx];
-			this->_inventory[idx] = nullptr;
 			std::cout << this->getName() << " drops a potion of " << this->_inventory[idx]->getType() << " from their " << idx << ". pocket to the floor" << std::endl;
+			this->_inventory[idx] = nullptr;
 			return ;
 		}
 	}
-	//sweepTheFloor();
-	//this->_floor[0] = this->_inventory[idx];
 	std::cout << "The floor is cluttered with stuff, nothing fits there anymore!" << std::endl;
 	return ;
 };
