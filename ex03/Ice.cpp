@@ -2,7 +2,7 @@
 
 Ice::Ice() : AMateria("ice") { };
 Ice::~Ice() { };
-Ice::Ice(const Ice& copy) {
+Ice::Ice(const Ice& copy) : AMateria() {
 	*this = copy;
 };
 Ice& Ice::operator=(const Ice& copy) {

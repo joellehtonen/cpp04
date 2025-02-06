@@ -3,7 +3,7 @@
 Cure::Cure() : AMateria("cure") {
 };
 Cure::~Cure() { };
-Cure::Cure(const Cure& copy) {
+Cure::Cure(const Cure& copy) : AMateria() {
 	*this = copy;
 };
 Cure& Cure::operator=(const Cure& copy) {

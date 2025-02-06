@@ -28,12 +28,19 @@ Character& Character::operator=(const Character& copy) {
 				_inventory[i] = copy._inventory[i]->clone();
 		}
 	}
+	std::cout << getName() << " duplicates itself!" << std::endl;
 	return *this;
 };
 
 std::string const & Character::getName() const 
 {
 	return(this->_name);
+};
+
+void Character::setName(std::string name)
+{
+	this->_name = name;
+	std::cout << "His new name is " << getName() << std::endl;
 };
 
 void Character::equip(AMateria* m) {
@@ -145,9 +152,4 @@ void Character::displayFloor() {
 		else
 			std::cout << i << ". floor tile next to " << this->_name << " is empty" << std::endl;
 	}
-};
-
-void Character::setName(std::string name)
-{
-	this->_name = name;
 };

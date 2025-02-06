@@ -64,7 +64,9 @@ int main ()
 	Saruman->use(3, *Gandalf);
 	Saruman->use(4, *Gandalf);
 
-	Character *Radagast(Gandalf);
+	Character *Radagast = new Character(*Gandalf);
+	Radagast->setName("Radagast");
+
 	Gandalf->use(0, *Gandalf);
 	Gandalf->use(2, *Saruman);
 	Gandalf->unequip(3);
