@@ -10,8 +10,8 @@ Brain::~Brain() {
 	std::cout << "The brain shrinks into non-existence!" << std::endl;
 };
 
-Brain::Brain(const Brain& copy) {
-	*this = copy;
+Brain::Brain(const Brain& source) {
+	*this = source;
 	std::cout << "A brain dublicates itself from another brain. Interesting..." << std::endl;
 };
 

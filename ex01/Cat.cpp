@@ -12,16 +12,17 @@ Cat::~Cat() {
 	std::cout << "The cat escapes into the wild!" << std::endl;
 };
 
-Cat::Cat(const Cat& copy) : Animal(copy) {
-	*this = copy;
-	std::cout << "A new kitten is made in the kitten mill of " << copy._type << std::endl;
+Cat::Cat(const Cat& source) : Animal(source) {
+	this->_type = source._type;
+	this->_catBrain = new Brain(*source._catBrain);
+	std::cout << "A new kitten is made in the kitten mill of " << source._type << std::endl;
 };
 
 Cat& Cat::operator=(const Cat& source) {
 	if (this != &source)
 	{
 		this->_type = source._type;
-		if (this->_catBrain != NULL)
+		if (this->_catBrain != nullptr)
 			delete this->_catBrain;
 		this->_catBrain = new Brain(*source._catBrain);
 		std::cout << "A kitty is born out of a " << source._type << std::endl;
@@ -48,5 +49,6 @@ const std::string	Cat::getIdea(int i) const
 
 void	Cat::setIdea(int i, std::string newIdea)
 {
+	std::cout << this->getType() << " is thinking of a new idea..." << std::endl;
 	this->_catBrain->setIdea(i, newIdea);
 };

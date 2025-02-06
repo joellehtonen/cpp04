@@ -11,7 +11,7 @@ class Dog : public Animal {
 	public: 
 		Dog();
 		~Dog();
-		Dog(const Dog& copy);
+		Dog(const Dog& source);
 		Dog& operator=(const Dog& source);
 		
 		void 				makeSound() override;

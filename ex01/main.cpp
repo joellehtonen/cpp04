@@ -1,10 +1,11 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "WrongCat.hpp"
+#include "Animal.hpp"
 
 int main(void)
 {
-	std::cout << "TEST 1" << std::endl;
+	std::cout << "\nTEST 1" << std::endl;
 	int	a = 8;
 	Animal*	pets[a];
 
@@ -24,7 +25,7 @@ int main(void)
 		delete pets[i];
 	}
 
-	std::cout << "TEST 2" << std::endl;
+	std::cout << "\nTEST 2" << std::endl;
 	Dog Fifi;
 	Dog Fafa(Fifi);
 	Dog Fufu;

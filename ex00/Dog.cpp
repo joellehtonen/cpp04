@@ -9,8 +9,8 @@ Dog::~Dog() {
 	std::cout << "The dog runs away from the kennel!" << std::endl;
 };
 
-Dog::Dog(const Dog& copy) : Animal(copy) {
-	*this = copy;
+Dog::Dog(const Dog& copy) : Animal(copy){
+	//*this = copy;
 	std::cout << "A new puppy is made in the puppy factory of " << copy._type << std::endl;
 };
 

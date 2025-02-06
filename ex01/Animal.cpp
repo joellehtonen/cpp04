@@ -13,10 +13,11 @@ Animal::~Animal() {
 	std::cout << "Default animal escapes!" << std::endl;
 };
 
-Animal::Animal(const Animal& copy) {
-	*this = copy;
-	std::cout << "Animal somehow copies itself from " << copy._type << std::endl;
+Animal::Animal(const Animal& source) {
+	*this = source;
+	std::cout << "Animal somehow copies itself from " << source._type << std::endl;
 };
+
 
 Animal& Animal::operator=(const Animal& source) {
 	if (this != &source)

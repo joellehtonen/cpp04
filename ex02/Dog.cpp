@@ -12,9 +12,10 @@ Dog::~Dog() {
 	std::cout << "The dog runs away from the kennel!" << std::endl;
 };
 
-Dog::Dog(const Dog& copy) : Animal(copy) {
-	*this = copy;
-	std::cout << "A new puppy is made in the puppy factory of " << copy._type << std::endl;
+Dog::Dog(const Dog& source) : Animal(source) {
+	this->_type = source._type;
+	this->_dogBrain = new Brain(*source._dogBrain);
+	std::cout << "A new puppy is made in the puppy factory of " << source._type << std::endl;
 };
 
 Dog& Dog::operator=(const Dog& source) {
@@ -48,5 +49,6 @@ const std::string	Dog::getIdea(int i) const
 
 void	Dog::setIdea(int i, std::string newIdea)
 {
+	std::cout << this->getType() << " is thinking of a new idea..." << std::endl;
 	this->_dogBrain->setIdea(i, newIdea);
 };

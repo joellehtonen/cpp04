@@ -9,7 +9,7 @@ class Brain {
 	public: 
 		Brain();
 		~Brain();
-		Brain(const Brain& copy);
+		Brain(const Brain& source);
 		Brain& operator=(const Brain& source);
 
 		const std::string	getIdea(int i) const;
