@@ -20,12 +20,15 @@ Character& Character::operator=(const Character& copy) {
 	if (this != &copy)
 	{
 		this->_name = copy._name;
+		this->initInventory();
 		this->sweepTheFloor();
 		this->emptyPockets();
 		for (int i = 0; i < _inventorySize; i++)
 		{
-			if (copy._inventory[i] != NULL)
+			if (copy._inventory[i] != nullptr)
 				_inventory[i] = copy._inventory[i]->clone();
+			else
+				_inventory[i] = nullptr;
 		}
 	}
 	std::cout << getName() << " duplicates itself!" << std::endl;
@@ -105,9 +108,11 @@ void Character::use(int idx, ICharacter& target) {
 };
 
 void Character::sweepTheFloor() {
+	if (_floor == nullptr)
+		return ;
 	for (int i = 0; i < _floorSize; i++)
 	{	
-		if (this->_floor[i] != NULL)
+		if (this->_floor[i] != nullptr)
 		{
 			delete this->_floor[i];
 			this->_floor[i] = nullptr;
@@ -116,9 +121,11 @@ void Character::sweepTheFloor() {
 };
 
 void Character::emptyPockets() {
+	if (_inventory == nullptr)
+		return ;
 	for (int i = 0; i < _inventorySize; i++)
 	{
-		if (this->_inventory[i] != NULL)
+		if (this->_inventory[i] != nullptr)
 		{
 			delete this->_inventory[i];
 			this->_inventory[i] = nullptr;

@@ -72,7 +72,7 @@ int main ()
 	Gandalf->unequip(3);
 	Gandalf->use(1, *Saruman);
 
-	Radagast->use(3, *Saruman);
+	Radagast->use(3, *Saruman); 
 	
 	delete Gandalf;
 	delete Saruman;

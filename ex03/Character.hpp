@@ -11,6 +11,7 @@ class Character : public ICharacter
 		static int const	_floorSize = _inventorySize * 4;
 		AMateria*			_inventory[_inventorySize];
 		AMateria*			_floor[_floorSize];
+		void				initInventory();
 		void				emptyPockets();
 
 	public:
@@ -24,7 +25,6 @@ class Character : public ICharacter
 		void 				equip(AMateria* m);
 		void 				unequip(int idx);
 		void 				use(int idx, ICharacter& target);
-		void				initInventory();
 		void 				displayInventory();
 		void				displayFloor();
 		void 				sweepTheFloor();
