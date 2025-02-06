@@ -6,7 +6,7 @@
 
 int main ()
 {
-	std::cout << "TEST #1" << std::endl;
+	std::cout << "\nTEST #1" << std::endl;
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -53,8 +53,8 @@ int main ()
 	Saruman->equip(evilSpell2);
 	Saruman->equip(evilSpell3);
 	Saruman->equip(evilSpell4);
-	Saruman->equip(evilSpell5);
-	Saruman->unequip(5);
+	Saruman->equip(evilSpell5); //no room
+	Saruman->unequip(5); //doesn't exist
 	Saruman->displayInventory();
 
 	Saruman->use(0, *Gandalf);
@@ -64,13 +64,17 @@ int main ()
 	Saruman->use(3, *Gandalf);
 	Saruman->use(4, *Gandalf);
 
+	Character *Radagast(Gandalf);
 	Gandalf->use(0, *Gandalf);
 	Gandalf->use(2, *Saruman);
 	Gandalf->unequip(3);
 	Gandalf->use(1, *Saruman);
+
+	Radagast->use(3, *Saruman);
 	
 	delete Gandalf;
 	delete Saruman;
+	delete Radagast;
 	delete grimoire;
 	delete evilSpell5;
 

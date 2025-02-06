@@ -56,7 +56,7 @@ void Character::equip(AMateria* m) {
 void Character::unequip(int idx) {
 	if (idx < 0 || idx > _inventorySize)
 	{
-		std::cout << this->_name << " realizes they do not have a " << idx << ". pocket to put a potion in!" << std::endl;
+		std::cout << this->_name << " realizes they do not have a " << idx << ". pocket to take potions out of." << std::endl;
 		return ;
 	}
 	if (this->_inventory[idx] == NULL)
