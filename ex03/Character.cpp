@@ -108,8 +108,6 @@ void Character::use(int idx, ICharacter& target) {
 };
 
 void Character::sweepTheFloor() {
-	if (_floor == nullptr)
-		return ;
 	for (int i = 0; i < _floorSize; i++)
 	{	
 		if (this->_floor[i] != nullptr)
@@ -121,8 +119,6 @@ void Character::sweepTheFloor() {
 };
 
 void Character::emptyPockets() {
-	if (_inventory == nullptr)
-		return ;
 	for (int i = 0; i < _inventorySize; i++)
 	{
 		if (this->_inventory[i] != nullptr)
